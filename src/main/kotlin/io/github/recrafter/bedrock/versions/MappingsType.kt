@@ -22,7 +22,7 @@ enum class MappingsType(val startMinecraftVersion: MinecraftVersion, val sides: 
 
     companion object {
         fun of(minecraftVersion: MinecraftVersion): MappingsType =
-            values()
+            MappingsType.entries
                 .sortedWith(compareByDescending(MinecraftVersion.COMPARATOR) { it.startMinecraftVersion })
                 .first { minecraftVersion >= it.startMinecraftVersion }
     }
