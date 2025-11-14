@@ -20,6 +20,6 @@ enum class ModLoaderFamily(val loaders: List<ModLoaderType>) {
 
     companion object {
         fun of(loader: ModLoaderType): ModLoaderFamily =
-            ModLoaderFamily.entries.first { it.loaders.contains(loader) }
+            ModLoaderFamily.values().first { it.loaders.contains(loader) }
     }
 }

@@ -6,13 +6,13 @@ import io.github.recrafter.bedrock.versions.MinecraftVersion
 
 enum class MinecraftEra(val versions: List<MinecraftVersion>, val versionPrefix: String) {
 
-    PRE_CLASSIC(PreClassic.entries, "rd-"),
-    CLASSIC(Classic.entries, "c"),
-    INDEV(Indev.entries, "in-"),
-    INFDEV(Infdev.entries, "inf-"),
-    ALPHA(Alpha.entries, "a"),
-    BETA(Beta.entries, "b"),
-    RELEASE(Release.entries, Constants.Char.EMPTY);
+    PRE_CLASSIC(PreClassic.values().toList(), "rd-"),
+    CLASSIC(Classic.values().toList(), "c"),
+    INDEV(Indev.values().toList(), "in-"),
+    INFDEV(Infdev.values().toList(), "inf-"),
+    ALPHA(Alpha.values().toList(), "a"),
+    BETA(Beta.values().toList(), "b"),
+    RELEASE(Release.values().toList(), Constants.Char.EMPTY);
 
     fun firstVersion(): MinecraftVersion =
         versions.first()
@@ -22,6 +22,6 @@ enum class MinecraftEra(val versions: List<MinecraftVersion>, val versionPrefix:
 
     companion object {
         fun parse(version: String): MinecraftEra =
-            MinecraftEra.entries.filterNot { it == RELEASE }.find { version.startsWith(it.versionPrefix) } ?: RELEASE
+            MinecraftEra.values().filterNot { it == RELEASE }.find { version.startsWith(it.versionPrefix) } ?: RELEASE
     }
 }
