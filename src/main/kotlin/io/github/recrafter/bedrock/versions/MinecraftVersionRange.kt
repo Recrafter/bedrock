@@ -1,5 +1,6 @@
 package io.github.recrafter.bedrock.versions
 
+import io.github.diskria.kotlin.utils.Constants
 import io.github.recrafter.bedrock.era.common.MinecraftEra
 
 open class MinecraftVersionRange(val min: MinecraftVersion, val max: MinecraftVersion = min) {
@@ -19,6 +20,15 @@ open class MinecraftVersionRange(val min: MinecraftVersion, val max: MinecraftVe
         }.sortedWith(MinecraftVersion.COMPARATOR)
     }
 
-    fun includesMinecraftVersion(minecraftVersion: MinecraftVersion): Boolean =
+    fun includesVersion(minecraftVersion: MinecraftVersion): Boolean =
         minecraftVersion >= min && minecraftVersion <= max
+
+    fun asString(): String =
+        buildString {
+            append(min.asString())
+            if (max != min) {
+                append(Constants.Char.HYPHEN)
+                append(max.asString())
+            }
+        }
 }
