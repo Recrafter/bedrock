@@ -5,6 +5,7 @@ import io.github.diskria.kotlin.utils.extensions.previousEnumOrNull
 import io.github.diskria.kotlin.utils.extensions.previousOrNull
 import io.github.diskria.kotlin.utils.extensions.toSemverOrNull
 import io.github.recrafter.bedrock.era.common.MinecraftEra
+import io.github.recrafter.bedrock.sides.ServerType
 
 interface MinecraftVersion {
 
@@ -64,3 +65,9 @@ val MinecraftVersion.previous: MinecraftVersion
 
 val MinecraftVersion.minJavaVersion: Int
     get() = JavaCompatibility.getMinJavaVersion(this)
+
+val MinecraftVersion.isInternalServer: Boolean
+    get() = ServerType.of(this) == ServerType.INTERNAL
+
+val MinecraftVersion.isIntegratedServer: Boolean
+    get() = ServerType.of(this) == ServerType.INTEGRATED
