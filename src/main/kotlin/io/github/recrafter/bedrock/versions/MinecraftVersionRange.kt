@@ -1,6 +1,8 @@
 package io.github.recrafter.bedrock.versions
 
 import io.github.diskria.kotlin.utils.Constants
+import io.github.diskria.kotlin.utils.extensions.primitives.repeat
+import io.github.diskria.kotlin.utils.extensions.splitToPairOrNull
 import io.github.recrafter.bedrock.era.common.MinecraftEra
 
 open class MinecraftVersionRange(val min: MinecraftVersion, val max: MinecraftVersion = min) {
@@ -31,4 +33,12 @@ open class MinecraftVersionRange(val min: MinecraftVersion, val max: MinecraftVe
                 append(max.asString())
             }
         }
+
+    companion object {
+        fun parse(range: String): MinecraftVersionRange =
+            range
+                .splitToPairOrNull(Constants.Char.HYPHEN.repeat(2))
+                ?.let { (min, max) -> MinecraftVersion.parse(min)..MinecraftVersion.parse(max) }
+                ?: MinecraftVersionRange(MinecraftVersion.parse(range))
+    }
 }
