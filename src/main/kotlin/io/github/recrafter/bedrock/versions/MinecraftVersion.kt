@@ -56,8 +56,8 @@ fun MinecraftVersion.getOrdinal(): Int =
 fun MinecraftVersion.previousOrNull(): MinecraftVersion? =
     asEnum().previousEnumOrNull()?.let { MinecraftVersion.of(it) } ?: getEra().previousOrNull()?.lastVersion()
 
+val MinecraftVersion.previous: MinecraftVersion
+    get() = previousOrNull() ?: error("Version has no previous version")
+
 val MinecraftVersion.minJavaVersion: Int
     get() = JavaCompatibility.getMinJavaVersion(this)
-
-val MinecraftVersion.mappingsType: MappingsType
-    get() = MappingsType.of(this)

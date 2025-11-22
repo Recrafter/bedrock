@@ -1,11 +1,12 @@
-package io.github.recrafter.bedrock.versions
+package io.github.recrafter.bedrock.loaders.ornithe
 
 import io.github.recrafter.bedrock.era.Release
 import io.github.recrafter.bedrock.era.common.MinecraftEra
 import io.github.recrafter.bedrock.sides.ModSide
-import kotlin.text.compareTo
+import io.github.recrafter.bedrock.versions.MinecraftVersion
+import io.github.recrafter.bedrock.versions.compareTo
 
-enum class MappingsType(val startMinecraftVersion: MinecraftVersion, val sides: List<ModSide>) {
+enum class OrnitheMappingsType(val startMinecraftVersion: MinecraftVersion, val sides: List<ModSide>) {
 
     CLIENT(
         MinecraftVersion.EARLIEST,
@@ -21,8 +22,8 @@ enum class MappingsType(val startMinecraftVersion: MinecraftVersion, val sides: 
     );
 
     companion object {
-        fun of(minecraftVersion: MinecraftVersion): MappingsType =
-            MappingsType.entries
+        fun of(minecraftVersion: MinecraftVersion): OrnitheMappingsType =
+            OrnitheMappingsType.entries
                 .sortedWith(compareByDescending(MinecraftVersion.COMPARATOR) { it.startMinecraftVersion })
                 .first { minecraftVersion >= it.startMinecraftVersion }
     }

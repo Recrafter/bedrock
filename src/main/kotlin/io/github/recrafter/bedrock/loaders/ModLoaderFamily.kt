@@ -7,8 +7,8 @@ enum class ModLoaderFamily(val loaders: List<ModLoaderType>) {
             ModLoaderType.FABRIC,
             ModLoaderType.QUILT,
             ModLoaderType.LEGACY_FABRIC,
-            ModLoaderType.ORNITHE,
             ModLoaderType.BABRIC,
+            ModLoaderType.ORNITHE,
         )
     ),
     FORGE(
