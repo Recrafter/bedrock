@@ -10,6 +10,9 @@ enum class PreClassic(private val version: String) : MinecraftVersion {
     RD_160052_LAUNCHER("160052-launcher"),
     RD_161348_LAUNCHER("161348-launcher");
 
+    override val normalizedSemver: String
+        get() = "0.0.0-${getEra().versionPrefix}$version"
+
     override fun getEra(): MinecraftEra = MinecraftEra.PRE_CLASSIC
 
     override fun getEnumVersion(): String = version

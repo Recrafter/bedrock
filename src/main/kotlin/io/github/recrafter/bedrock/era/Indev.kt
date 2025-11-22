@@ -29,6 +29,9 @@ enum class Indev(private val version: String) : MinecraftVersion {
     INDEV_20100219("20100219"),
     INDEV_20100223("20100223");
 
+    override val normalizedSemver: String
+        get() = "0.31.$version"
+
     override fun getEra(): MinecraftEra = MinecraftEra.INDEV
 
     override fun getEnumVersion(): String = version

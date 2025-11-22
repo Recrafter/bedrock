@@ -8,6 +8,9 @@ import io.github.recrafter.bedrock.era.common.MinecraftEra
 
 interface MinecraftVersion {
 
+    val normalizedSemver: String
+        get() = getEnumVersion()
+
     fun getEra(): MinecraftEra
 
     fun getEnumVersion(): String
