@@ -102,7 +102,9 @@ enum class Release(private val version: String) : MinecraftVersion {
     V_1_21_9("1.21.9"),
     V_1_21_10("1.21.10");
 
-    override val era: MinecraftEra = MinecraftEra.RELEASE
+    override val era: MinecraftEra
+        get() = MinecraftEra.RELEASE
 
-    override fun getEnumVersion(): String = version
+    override val enumVersion: String
+        get() = version
 }

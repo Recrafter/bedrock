@@ -13,7 +13,9 @@ enum class PreClassic(private val version: String) : MinecraftVersion {
     override val normalizedSemver: String
         get() = "0.0.0-${era.prefix}$version"
 
-    override val era: MinecraftEra = MinecraftEra.PRE_CLASSIC
+    override val era: MinecraftEra
+        get() = MinecraftEra.PRE_CLASSIC
 
-    override fun getEnumVersion(): String = version
+    override val enumVersion: String
+        get() = version
 }

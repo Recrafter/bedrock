@@ -9,11 +9,11 @@ import io.github.recrafter.bedrock.sides.ServerType
 interface MinecraftVersion {
 
     val normalizedSemver: String
-        get() = getEnumVersion()
+        get() = enumVersion
 
     val era: MinecraftEra
 
-    fun getEnumVersion(): String
+    val enumVersion: String
 
     companion object {
         val EARLIEST: MinecraftVersion = MinecraftEra.entries.first().firstVersion()
@@ -27,7 +27,7 @@ interface MinecraftVersion {
         fun parseOrNull(version: String): MinecraftVersion? {
             val era = MinecraftEra.parse(version)
             val normalizedVersion = version.toSemverOrNull()?.toVersion(dropZeroPatch = true) ?: version
-            return era.versions.find { normalizedVersion == era.prefix + it.getEnumVersion() }
+            return era.versions.find { normalizedVersion == era.prefix + it.enumVersion }
         }
 
         fun of(enum: Enum<*>): MinecraftVersion =
@@ -52,7 +52,7 @@ operator fun MinecraftVersionRange.contains(version: MinecraftVersion): Boolean 
     version >= min && version <= max
 
 fun MinecraftVersion.asString(): String =
-    era.prefix + getEnumVersion()
+    era.prefix + enumVersion
 
 fun MinecraftVersion.previousOrNull(): MinecraftVersion? =
     asEnum().previousEnumOrNull()?.let { MinecraftVersion.of(it) } ?: era.previousOrNull()?.lastVersion()
