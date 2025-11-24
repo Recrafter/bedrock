@@ -8,7 +8,7 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-object MinecraftVersionSerializer : KotlinSerializer<MinecraftVersion> {
+internal object MinecraftVersionSerializer : KotlinSerializer<MinecraftVersion> {
 
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(
         MinecraftVersion::class.className(), PrimitiveKind.STRING

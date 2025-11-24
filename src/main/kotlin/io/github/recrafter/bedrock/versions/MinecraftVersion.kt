@@ -5,7 +5,9 @@ import io.github.diskria.kotlin.utils.extensions.*
 import io.github.diskria.kotlin.utils.extensions.common.failWithDetails
 import io.github.recrafter.bedrock.era.common.MinecraftEra
 import io.github.recrafter.bedrock.sides.ServerType
+import kotlinx.serialization.Serializable
 
+@Serializable(with = MinecraftVersionSerializer::class)
 interface MinecraftVersion {
 
     val normalizedSemver: String
