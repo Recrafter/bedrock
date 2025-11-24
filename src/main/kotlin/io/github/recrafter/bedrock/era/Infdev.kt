@@ -36,7 +36,7 @@ enum class Infdev(private val version: String) : MinecraftVersion {
     override val normalizedSemver: String
         get() = "0.31.$version"
 
-    override fun getEra(): MinecraftEra = MinecraftEra.INFDEV
+    override val era: MinecraftEra = MinecraftEra.INFDEV
 
     override fun getEnumVersion(): String = version
 }
