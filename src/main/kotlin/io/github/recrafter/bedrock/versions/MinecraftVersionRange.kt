@@ -21,17 +21,20 @@ open class MinecraftVersionRange private constructor(
             }
             .sortedWith(MinecraftVersion.COMPARATOR)
 
-    fun asString(separator: String): String =
+    fun asString(separator: String = DEFAULT_SEPARATOR): String =
         buildString {
             append(min.asString())
-            if (max != min) {
+            if (!isSingleVersion()) {
                 append(separator)
                 append(max.asString())
             }
         }
 
+    fun isSingleVersion(): Boolean =
+        min == max
+
     override fun toString(): String =
-        asString(DEFAULT_SEPARATOR)
+        asString()
 
     companion object {
         private const val DEFAULT_SEPARATOR: String = ".."
