@@ -3,7 +3,7 @@ projektor = "4.+"
 
 kotlin = "2.0.21"
 
-kotlin-utils = "0.8.8"
+kotlin-utils = "0.8.9"
 gradle-utils = "0.8.11"
 
 kotlin-serialization-json = "1.7.3"
