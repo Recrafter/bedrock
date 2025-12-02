@@ -29,7 +29,7 @@ sealed class CrafterFlow(val name: String) {
         }
 
         fun values(): List<CrafterFlow> =
-            listOf(Normal, Single, Bisect)
+            listOf(Normal, Single)
     }
 
     data object Normal : CrafterFlow("normal")
@@ -37,10 +37,6 @@ sealed class CrafterFlow(val name: String) {
     data object Single : CrafterFlow("single") {
         val loader: ModLoaderType get() = requireProperty("loader").toEnum<ModLoaderType>(`kebab-case`)
         val version: MinecraftVersion get() = MinecraftVersion.parse(requireProperty("version"))
-    }
-
-    data object Bisect : CrafterFlow("bisect") {
-        val loader: ModLoaderType get() = requireProperty("loader").toEnum<ModLoaderType>(`kebab-case`)
-        val direction: CrafterBisectDirection get() = requireProperty("direction").toEnum<CrafterBisectDirection>()
+        val modProjectName: String get() = requireProperty("modProjectName")
     }
 }
