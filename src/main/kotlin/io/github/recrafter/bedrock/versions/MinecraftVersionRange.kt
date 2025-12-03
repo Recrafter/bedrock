@@ -37,6 +37,8 @@ open class MinecraftVersionRange private constructor(
         asString()
 
     companion object {
+        const val MOD_PROJECT_NAME_SEPARATOR: String = "--"
+
         private const val DEFAULT_SEPARATOR: String = ".."
 
         fun of(min: MinecraftVersion, max: MinecraftVersion = min): MinecraftVersionRange {

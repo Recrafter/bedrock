@@ -25,6 +25,9 @@ enum class Classic(private val version: String) : MinecraftVersion {
     C_0_29_02("0.29_02"),
     C_0_30_C_RENEW("0.30-c-renew");
 
+    override val normalizedSemver: String
+        get() = version.replaceFirst("a", ".a").replace("_0", ".").replace("_", ".")
+
     override val era: MinecraftEra
         get() = MinecraftEra.CLASSIC
 
