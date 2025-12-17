@@ -1,13 +1,17 @@
 package io.github.recrafter.bedrock.versions
 
 import io.github.diskria.gradle.utils.extensions.common.gradleError
+import io.github.diskria.gradle.utils.extensions.common.requireGradle
+import io.github.diskria.kotlin.utils.Constants
+import io.github.diskria.kotlin.utils.extensions.primitives.repeat
 import io.github.diskria.kotlin.utils.extensions.splitToPairOrNull
 import io.github.recrafter.bedrock.era.common.MinecraftEra
 
 open class MinecraftVersionRange private constructor(
     val min: MinecraftVersion,
     val max: MinecraftVersion,
-) {
+) : Comparable<MinecraftVersionRange> {
+
     fun expand(): List<MinecraftVersion> =
         MinecraftEra.entries
             .filter { it in min.era..max.era }
@@ -36,17 +40,18 @@ open class MinecraftVersionRange private constructor(
     override fun toString(): String =
         asString()
 
-    companion object {
-        const val MOD_PROJECT_NAME_SEPARATOR: String = "--"
+    override fun compareTo(other: MinecraftVersionRange): Int =
+        MinecraftVersion.COMPARATOR.compare(min, other.min)
 
-        private const val DEFAULT_SEPARATOR: String = ".."
+    companion object {
+        val PROJECT_NAME_SEPARATOR: String = Constants.Char.HYPHEN.repeat(2)
+
+        private const val DEFAULT_SEPARATOR: String = Constants.Char.EN_DASH.toString()
 
         fun of(min: MinecraftVersion, max: MinecraftVersion = min): MinecraftVersionRange {
-            require(max >= min) {
-                gradleError(
-                    "Invalid Minecraft version range: " +
-                            "max (${max.asString()}) must not be lower than min (${min.asString()})."
-                )
+            requireGradle(max >= min) {
+                "Invalid Minecraft version range ${min.asString()}$DEFAULT_SEPARATOR${max.asString()}: " +
+                        "max must not be lower than min."
             }
             return MinecraftVersionRange(min, max)
         }
