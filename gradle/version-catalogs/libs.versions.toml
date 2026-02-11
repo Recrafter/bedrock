@@ -1,12 +1,12 @@
 [versions]
-projektor = "4.+"
+projektor = "5.+"
 
-kotlin = "2.0.21"
+kotlin = "2.2.21"
 
-kotlin-utils = "0.9.1"
-gradle-utils = "0.9.3"
+kotlin-utils = "0.10.1"
+gradle-utils = "0.10.1"
 
-kotlin-serialization-json = "1.7.3"
+kotlin-serialization-json = "1.10.0"
 
 [plugins]
 projektor = { id = "io.github.diskria.projektor", version.ref = "projektor" }

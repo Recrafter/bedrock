@@ -1,14 +1,14 @@
 package io.github.recrafter.bedrock.versions
 
-import io.github.diskria.kotlin.utils.extensions.common.KotlinSerializer
 import io.github.diskria.kotlin.utils.extensions.common.className
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-internal object MinecraftVersionSerializer : KotlinSerializer<MinecraftVersion> {
+internal object MinecraftVersionSerializer : KSerializer<MinecraftVersion> {
 
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(
         MinecraftVersion::class.className(), PrimitiveKind.STRING

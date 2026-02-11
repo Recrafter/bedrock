@@ -26,7 +26,10 @@ enum class Beta(private val version: String) : MinecraftVersion {
     B_1_8_1("1.8.1");
 
     override val normalizedSemver: String
-        get() = "1.0.0-beta.${version.removePrefix("1.").replace("_0", ".")}"
+        get() = "1.0.0-beta." +
+            version
+                .removePrefix("1.")
+                .replace("_0", ".")
 
     override val era: MinecraftEra
         get() = MinecraftEra.BETA

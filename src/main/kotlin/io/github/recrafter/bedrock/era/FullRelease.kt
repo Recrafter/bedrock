@@ -3,7 +3,7 @@ package io.github.recrafter.bedrock.era
 import io.github.recrafter.bedrock.era.common.MinecraftEra
 import io.github.recrafter.bedrock.versions.MinecraftVersion
 
-enum class Release(private val version: String) : MinecraftVersion {
+enum class FullRelease(private val version: String) : MinecraftVersion {
 
     V_1_1("1.1"),
     V_1_2_1("1.2.1"),
@@ -98,10 +98,12 @@ enum class Release(private val version: String) : MinecraftVersion {
     V_1_21_8("1.21.8"),
     V_1_21_9("1.21.9"),
     V_1_21_10("1.21.10"),
-    V_1_21_11("1.21.11");
+    V_1_21_11("1.21.11"),
+//    V_26_1("26.1"),
+    ;
 
     override val era: MinecraftEra
-        get() = MinecraftEra.RELEASE
+        get() = MinecraftEra.FULL_RELEASE
 
     override val enumVersion: String
         get() = version

@@ -20,7 +20,11 @@ enum class Alpha(private val version: String) : MinecraftVersion {
     A_1_2_6("1.2.6");
 
     override val normalizedSemver: String
-        get() = "1.0.0-alpha.${version.removePrefix("1.").substringBeforeLast("-").replace("_0", ".")}"
+        get() = "1.0.0-alpha." +
+            version
+                .removePrefix("1.")
+                .substringBeforeLast("-")
+                .replace("_0", ".")
 
     override val era: MinecraftEra
         get() = MinecraftEra.ALPHA

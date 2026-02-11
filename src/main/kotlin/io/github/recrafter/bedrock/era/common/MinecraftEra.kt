@@ -14,7 +14,7 @@ enum class MinecraftEra(val versions: List<MinecraftVersion>, val prefix: String
     INFDEV(Infdev.entries, "inf-"),
     ALPHA(Alpha.entries, "a"),
     BETA(Beta.entries, "b"),
-    RELEASE(Release.entries, Constants.Char.EMPTY);
+    FULL_RELEASE(FullRelease.entries, Constants.Char.EMPTY);
 
     val displayName: String
         get() = getName(`Train-Case`)
@@ -28,8 +28,8 @@ enum class MinecraftEra(val versions: List<MinecraftVersion>, val prefix: String
     companion object {
         fun parse(version: String): MinecraftEra =
             MinecraftEra.entries
-                .filterNot { it == RELEASE }
+                .filterNot { it == FULL_RELEASE }
                 .find { version.startsWith(it.prefix) }
-                ?: RELEASE
+                ?: FULL_RELEASE
     }
 }

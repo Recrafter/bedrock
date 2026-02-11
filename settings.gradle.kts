@@ -11,15 +11,15 @@ pluginManagement {
 }
 
 plugins {
-    id("io.github.diskria.projektor.settings") version "4.+"
+    id("io.github.diskria.projektor.settings") version "5.+"
 }
 
 projekt {
-    version = "1.0.2"
+    version = "1.0.3"
     license = MIT
     publish = setOf(
         MAVEN_CENTRAL,
     )
 
-    gradlePlugin()
+    kotlinLibrary()
 }
