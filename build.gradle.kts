@@ -2,8 +2,8 @@ import io.github.diskria.gradle.utils.extensions.getCatalogVersion
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.projektor)
+    `java-library`
 }
 
 dependencies {

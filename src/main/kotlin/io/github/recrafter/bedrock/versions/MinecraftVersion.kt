@@ -18,8 +18,8 @@ interface MinecraftVersion {
     val enumVersion: String
 
     companion object {
-        val EARLIEST: MinecraftVersion = MinecraftEra.entries.first().firstVersion()
-        val LATEST: MinecraftVersion = MinecraftEra.entries.last().lastVersion()
+        val EARLIEST: MinecraftVersion by lazy { MinecraftEra.entries.first().firstVersion() }
+        val LATEST: MinecraftVersion by lazy { MinecraftEra.entries.last().lastVersion() }
 
         val COMPARATOR: Comparator<MinecraftVersion> = Comparator { before, after -> before.compareTo(after) }
 
