@@ -4,7 +4,6 @@ import io.github.diskria.gradle.utils.extensions.common.gradleError
 import io.github.diskria.kotlin.utils.extensions.*
 import io.github.diskria.kotlin.utils.extensions.common.failWithDetails
 import io.github.recrafter.bedrock.era.common.MinecraftEra
-import io.github.recrafter.bedrock.sides.ServerType
 import kotlinx.serialization.Serializable
 
 @Serializable(with = MinecraftVersionSerializer::class)
@@ -83,10 +82,10 @@ val MinecraftVersion.next: MinecraftVersion
     }
 
 val MinecraftVersion.minJavaVersion: Int
-    get() = JavaCompatibility.getMinJavaVersion(this)
+    get() = CompatibilityHelper.getMinJavaVersion(this)
 
-val MinecraftVersion.isInternalServer: Boolean
-    get() = ServerType.of(this) == ServerType.INTERNAL
+val MinecraftVersion.dataPackFormat: String?
+    get() = CompatibilityHelper.getDataPackFormat(this)
 
-val MinecraftVersion.isIntegratedServer: Boolean
-    get() = ServerType.of(this) == ServerType.INTEGRATED
+val MinecraftVersion.resourcePackFormat: String?
+    get() = CompatibilityHelper.getResourcePackFormat(this)
