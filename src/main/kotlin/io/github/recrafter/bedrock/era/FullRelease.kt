@@ -99,7 +99,7 @@ enum class FullRelease(private val version: String) : MinecraftVersion {
     V_1_21_9("1.21.9"),
     V_1_21_10("1.21.10"),
     V_1_21_11("1.21.11"),
-//    V_26_1("26.1"),
+    V_26_1("26.1"),
     ;
 
     override val era: MinecraftEra

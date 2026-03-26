@@ -9,7 +9,7 @@ object CompatibilityHelper {
         FullRelease.V_1_17 to 16,
         FullRelease.V_1_18 to 17,
         FullRelease.V_1_20_5 to 21,
-//        FullRelease.V_26_1 to 25,
+        FullRelease.V_26_1 to 25,
     )
 
     private val DATA_PACK_FORMATS: Map<MinecraftVersion, String> = mapOf(
@@ -33,7 +33,7 @@ object CompatibilityHelper {
         FullRelease.V_1_21_7 to "81",
         FullRelease.V_1_21_9 to "88.0",
         FullRelease.V_1_21_11 to "94.1",
-//        FullRelease.V_26_1 to "101.0",
+        FullRelease.V_26_1 to "101.1",
     )
 
     private val RESOURCE_PACK_FORMATS: Map<MinecraftVersion, String> = mapOf(
@@ -60,7 +60,7 @@ object CompatibilityHelper {
         FullRelease.V_1_21_7 to "64",
         FullRelease.V_1_21_9 to "69.0",
         FullRelease.V_1_21_11 to "75",
-//        FullRelease.V_26_1 to "84.0",
+        FullRelease.V_26_1 to "84.0",
     )
 
     fun getMinJavaVersion(minecraftVersion: MinecraftVersion): Int =
