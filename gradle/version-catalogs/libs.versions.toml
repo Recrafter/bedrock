@@ -2,7 +2,7 @@
 projektor = "6.+"
 
 kotlin-utils = "0.11.1"
-gradle-utils = "0.11.1"
+gradle-utils = "0.11.2"
 
 kotlin-serialization-json = "1.10.0"
 
